@@ -109,7 +109,7 @@ import Surge
 let a = [1.0, 3.0, 5.0, 7.0]
 let b = [2.0, 4.0, 6.0, 8.0]
 
-let product = Surge.mul(a, b) // [2.0, 12.0, 30.0, 56.0]
+let product = Surge.elmul(a, b) // [2.0, 12.0, 30.0, 56.0]
 ```
 
 # Inventory
@@ -171,8 +171,8 @@ Addition functions & operators
 |--------------------|----------|--------------|-------------------|
 | `(Array, Array)`   | `add`    | `.+` (infix) | `.+=` (infix)     |
 | `(Array, Scalar)`  | `add`    | `+` (infix)  | `+=` (infix)      |
-| `(Matrix, Matrix)` | `add`    | `+` (infix)  | n/a               |
-| `(Matrix, Scalar)` | n/a      | `+` (infix)  | n/a               |
+| `(Matrix, Matrix)` | `add`    | `+` (infix)  | `+=` (infix)      |
+| `(Matrix, Scalar)` | n/a      | n/a          | n/a               |
 | `(Vector, Vector)` | `add`    | `+` (infix)  | `+=` (infix)      |
 | `(Vector, Scalar)` | `add`    | `+` (infix)  | `+=` (infix)      |
 
@@ -208,7 +208,7 @@ Subtraction functions & operators
 |--------------------|----------|--------------|-------------------|
 | `(Array, Array)`   | `sub`    | `.-` (infix) | `.-=` (infix)     |
 | `(Array, Scalar)`  | `sub`    | `-` (infix)  | `-=` (infix)      |
-| `(Matrix, Matrix)` | `sub`    | `-` (infix)  | n/a               |
+| `(Matrix, Matrix)` | `sub`    | `-` (infix)  | `-=` (infix)      |
 | `(Matrix, Scalar)` | n/a      | n/a          | n/a               |
 | `(Vector, Vector)` | `sub`    | `-` (infix)  | `-=` (infix)      |
 | `(Vector, Scalar)` | `sub`    | `-` (infix)  | `-=` (infix)      |
@@ -543,10 +543,12 @@ Power functions & operators
 
 | Arguments          | Function | Operator     | In-Place Operator |
 |--------------------|----------|--------------|-------------------|
-| `(Array, Array)`   | `pow`    | `**` (infix) | n/a               |
-| `(Array, Scalar)`  | `pow`    | `**` (infix) | n/a               |
-| `(Matrix, Scalar)` | `pow`    | `**` (infix) | n/a               |
+| `(Array, Array)`   | `pow`    | `.**` (infix) | `.**=` (infix)    |
+| `(Array, Scalar)`  | `pow`    | `**` (infix) | `**=` (infix)     |
+| `(Matrix, Scalar)` | `pow`    | n/a          | n/a               |
 | `(Vector, Vector)` | `pow`    | n/a          | n/a               |
+
+([Serial exponentiation](https://en.wikipedia.org/wiki/Order_of_operations#Serial_exponentiation): `a ** b ** c == a ** (b ** c)`)
 
 <!--
 Internal use only:
@@ -806,8 +808,8 @@ Fast fourier transform functions & operators
 
 </details>
 
-[build status]: https://travis-ci.org/Jounce/Surge
-[build status badge]: https://api.travis-ci.com/Jounce/Surge.svg?branch=master
+[build status]: https://github.com/Jounce/Surge/actions?query=workflow%3ACI
+[build status badge]: https://github.com/Jounce/Surge/workflows/CI/badge.svg
 [license]: https://opensource.org/licenses/MIT
 [license badge]: https://img.shields.io/cocoapods/l/Surge.svg
 [cocoapods platforms badge]: https://img.shields.io/cocoapods/p/Surge.svg
